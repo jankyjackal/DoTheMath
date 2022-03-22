@@ -2,4 +2,4 @@
 
 
 ** Description
-   Practice math from the commandline.
+   Practice math from the command-line.
