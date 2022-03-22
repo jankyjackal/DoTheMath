@@ -48,6 +48,11 @@ def qmul(factors: list):
     return False
 
 
+def qdiv(dividend, devisor):
+    raise NotImplemented
+    quotient = dividend / devisor
+
+
 def square_to_ten():
     answers = input_ints("1² to 10²: ")
     if answers == None:
