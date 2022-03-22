@@ -1,11 +1,33 @@
-from questions import *
+#!/usr/bin/python3
+from random import randint
+from qs.questions import *
 
 def main():
-    qs = [
-            Question(random_add, amount=3, min=10, max=100),
+    questions = [
+            Question(trys=0, question=square_to_ten)
             ]
-    for q in qs:
-        q.prompt()
+
+    for i in range(4):
+        questions.append(
+                Question(
+                    trys=0, 
+                    question=qadd,
+                    addends=[randint(1, 100) for i in range(2)]
+            )
+        )
+
+    for i in range(4):
+        questions.append(
+                Question(
+                    trys=0,
+                    question=qmul,
+                    factors=[randint(1, 12) for i in range(2)]
+            )
+        )
+
+
+    for q in questions:
+        q()
 
 if __name__ == '__main__':
     main()
