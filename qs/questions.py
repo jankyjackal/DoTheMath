@@ -1,7 +1,7 @@
 from .inputs import *
 from random import randint
 
-__all__ = ['Question', 'qadd', 'qmul', 'square_to_ten']
+__all__ = ['Question', 'qadd', 'qmul', 'square_to_ten', 'qdiv', 'qsub']
 
 class Question:
 
@@ -23,34 +23,43 @@ class Question:
                 print("Correct!")
                 break
 
-def qadd(addends: list):
+def _check_numbers(user_answer: int, correct_answer: int) -> bool:
+    if user_answer == None:
+        return None
+    elif user_answer == correct_answer:
+        return True
+    return False
+
+def qadd(addends: list) -> bool:
     s = sum(addends)
     prompt = ' + '.join([str(i) for i in addends])
     answer = input_int(f"{prompt} = ")
-    if answer == None:
-        return None
-    elif answer == s:
-        return True
-    return False
+    return _check_numbers(answer, s)
 
 
-def qmul(factors: list):
+def qmul(factors: list) -> bool:
     product = 1
     for i in factors:
         product *= i
-
     prompt = ' × '.join([str(i) for i in factors])
     answer = input_int(f"{prompt} = ")
-    if answer == None:
-        return None
-    elif answer == product:
-        return True
-    return False
+    return _check_numbers(answer, product)
 
 
-def qdiv(dividend, devisor):
-    raise NotImplemented
+def qsub(minued, subtrahend) -> bool :
+    difference = minued - subtrahend
+    prompt = f"{minued} - {subtrahend} = "
+    answer = input_int(prompt)
+    return _check_numbers(answer, difference)
+
+
+def qdiv(dividend: int, devisor: int) -> bool:
+    if devisor == 0:
+        raise ZeroDivisionError("qdiv: devisor must not be a zero")
     quotient = dividend / devisor
+    prompt = f"{dividend} / {devisor} = "
+    answer = input_int(prompt)
+    return _check_numbers(answer, quotient)
 
 
 def square_to_ten():
@@ -67,3 +76,5 @@ def square_to_ten():
     if len(set(answers)) != 10:
         return False
     return True
+
+
