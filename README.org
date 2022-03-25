@@ -1,8 +1,0 @@
-#+title: DoTheMath
-
-** Description
-   Practice math from the command-line.
-   
-   Inspired by [[https://www.youtube.com/c/terminalforlife][TerminalForLife]]'s video [[https://www.youtube.com/watch?v=9zi4l9ZI9SE]["Programming Improves My Crap Arithmetic Skills"]]. 
-   
-   Written in Python.
